@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+## Getting the App Up and Running
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- `git clone` and `cd` into the project
 
-## Available Scripts
+### React App 
+- `npm install` to install all dependencies
+- `npm start`
+- Navigate to `localhost:3000` to view app
 
-In the project directory, you can run:
+### Sanity Studio
 
-### `yarn start`
+To get our Sanity Studio up and running, we need to have a projectId in `src/client.js`. If you already have a `projectId` then be sure to add that value there. Otherwise you will need to `sanity init`. All instructions are below.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+If you already have a `projectId`:
+- Run the command `cd blog`
+- Run `sanity install` to install Sanity dependencies
+- Add `projectId` to `src/client.js`
+- Run `sanity start`
+- Navigate to `localhost:3333` to view Sanity Studio
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+If you _do not_ have a `projectId`:
+- Run the command `cd blog`
+- Run `sanity init`
+- Answer the following questions:
+    * Create new project — Hit Enter. 
+    * Your project name: — We can name it whatever we would like. Let’s use My Sanity Blog for this project. 
+    * Use the default dataset configuration? — The default dataset configuration has a public dataset named "production", let's stick with that. So type in "Y" and hit Enter. 
+    * Project output path: — This will show us the path where our sanity project will live. The path should show the path that leads to this: /sanity-react/blog. Hit Enter. 
+    * Select project template: — Here we are going to choose Blog (schema). Using the arrow keys, navigate to that so it’s showing blue. Hit Enter once there. Success!
+- Add new `projectId` to `src/client.js` (detailed instructions below)
+- Run `sanity start`
+- Navigate to `localhost:3333` to view Sanity Studio
 
-### `yarn test`
+## Sanity Management
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Connecting the React app and Sanity project can be done with the following steps:
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Navigate to [manage.sanity.io](https://manage.sanity.io/)
+- Click on the name of your project (name was created during `sanity init`)
+- Find the `projectId` at the top of the project's dashboard.
+    * Navigate to `src/client.js` in the code and insert the projectId where it says "YOUR PROJECT ID HERE"
+- Back in the project's dashboard, go to the "Settings" tab
+    * Click on API
+    * Under "CORS Origins" click on "ADD NEW ORIGIN"
+    * Insert `http://localhost:3000`
+    * Click on "ADD NEW ORIGIN"
