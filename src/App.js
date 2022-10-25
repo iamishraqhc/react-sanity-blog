@@ -1,16 +1,16 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { AllPosts, OnePost } from "./components";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <div>
-        <Route component={AllPosts} path="/" exact />
-        <Route component={OnePost} path="/:slug" exact />
-      </div>
-    </BrowserRouter>
+    <Router>
+      <Routes>
+        <Route element={<AllPosts />} path="/" exact />
+        <Route element={<OnePost />} path="/:slug" exact />
+      </Routes>
+    </Router>
   );
 };
 
