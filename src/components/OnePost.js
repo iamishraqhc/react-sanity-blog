@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import SanityClient from '../client'
 import imageUrlBuilder from '@sanity/image-url'
 import BlockContent from '@sanity/block-content-to-react'
@@ -13,6 +13,9 @@ const urlFor = (source) => {
 const OnePost = () => {
     const [postData, setPostData] = useState(null)
     const { slug } = useParams()
+    const navigate = useNavigate()
+
+    const goBack = () => navigate('/')
 
     useEffect(() => {
         SanityClient.fetch(
@@ -38,8 +41,8 @@ const OnePost = () => {
     if (!postData) return <div>Loading...</div>
     
     return (
-        <div className="bg-gray-200 min-h-screen p-12">
-            <div className="container shadow-lg mx-auto bg-green-100 rounded-lg">
+        <div className="bg-green-100 min-h-screen p-12">
+            <div className="container shadow-lg mx-auto rounded-lg">
                 <div className="relative">
                     <div className="absolute h-full w-full flex items-center justify-center p-8">
                         <div className="bg-white bg-opacity-75 rounded p-12">
@@ -71,6 +74,11 @@ const OnePost = () => {
                         projectId={SanityClient.clientConfig.projectId}
                         dataset={SanityClient.clientConfig.dataset}
                     />
+                </div>
+                <div className='container m-9-auto max-w-auto flex justify-center p-3'>
+                    <button className='bg-transparent hover:bg-green-400 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded' onClick={goBack}>
+                        All Posts
+                    </button>
                 </div>
             </div>
       </div>

@@ -4,8 +4,8 @@
     "name": "react-sanity-blog"
   },
   "api": {
-    "projectId": "2xm7eqao",
-    "dataset": "production"
+    "projectId": "%REACT_APP_SANITY_PROJECT_ID%",
+    "dataset": "%REACT_APP_SANITY_DATASET%"
   },
   "plugins": [
     "@sanity/base",
